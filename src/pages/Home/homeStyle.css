@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.hero .btn {
+    display: block;
+    width: 200px;
+    padding: 1em;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: rgba(147, 112, 219, 0.8);
+}
+
+
+/*====== WIDTH ======*/
+.screenW {
+    /* width: 100vw; */
+}
+.fullW {
+    width: 100%;
+}
+/*====== HEIGHT ======*/
+.screenH {
+    height: 90vh;
+}
+.fullH {
+    height: 100%;
+}
+.height70 {
+    height: 70px;
+}
+/*====== BG COLOR ======*/
+.dGray {
+    background-color: #333;
+}
+.white {
+    background-color: #fff;
+}
+.white50 {
+    background-color: #ffffff80;
+}
+.black50 {
+    background-color: #00000080;
+}
+/*====== FONT ======*/
+.fSize2 {
+    font-size: 2rem;
+}
+/*====== IMAGE ======*/
+.imgCover {
+    object-fit: cover;
+}
+/*====== OVERFLOW ======*/
+.overflowH {
+    overflow: hidden;
+}
+/*====== TRANSITIONS ======*/
+.transition1l {
+    transition: left 1s ease-in-out;
+}
+/*====== POSITION ======*/
+.abs {
+    position: absolute;
+}
+.rel {
+    position: relative;
+}
+.left0 {
+    left: 0px;
+}
+.left100vw {
+    left: 100vw;
+}
+.leftM100vw {
+    left: -100vw;
+}
+.bot0 {
+    bottom: 0;
+}
+/*====== FLEX ======*/
+.df {
+    display: flex;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.fCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex1 {
+    flex: 1;
+}
+.flex8 {
+    flex: 8;
+}
+
+/*====== CUSTOM ======*/
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    transition: background-color 1s ease-in-out;
+}
+
+.divRounded {
+    margin: 0;
+    -webkit-border-bottom-right-radius: 300px;
+    -webkit-border-bottom-left-radius: 300px;
+    -moz-border-radius-bottomright: 300px;
+    -moz-border-radius-bottomleft: 300px;
+    border-bottom-right-radius: 300px;
+    border-bottom-left-radius: 300px;
+    background-image: url('../Home/images/signpattern.jpg');
+    background-size: cover;
+    text-align: center;
+    color: white;
+    word-wrap: normal;
+    margin-top: -24px;
+    height: 20vh;
+    font-size: 20px;
+    line-height: 20vh;
+}
