@@ -1,13 +1,14 @@
 import React from 'react';
 import Map from './components/Map';
-import './passengerStyle.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './driverStyle.css';
+// import credentials from './../../credentials';
 
 // Material UI components imports
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -18,17 +19,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 
 
 // Import assets (images, icons)
 import Logo from './../../assets/images/logo.jpg';
-import MenuIcon from '@material-ui/icons/Menu';
-import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import GroupIcon from '@material-ui/icons/Group';
 import RoomIcon from '@material-ui/icons/Room';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
 
 import TimeInput from 'material-ui-time-picker'
 
@@ -112,22 +111,19 @@ export default function HomePassenger(props) {
         </div>
         <Divider />
         <List>
-            <ListItem button key={'View All Spots'}>
+            <ListItem button key={'View Your Spots'}>
                 <ListItemIcon> <RoomIcon /> </ListItemIcon>
-                <ListItemText primary={'View All Spots'} /> 
+                <ListItemText primary={'View Your Spots'} /> 
             </ListItem>
-            <ListItem button key={'View Your Drivers'}>
-                <ListItemIcon> <DriveEtaIcon /> </ListItemIcon>
-                <ListItemText primary={'View Your Drivers'} /> 
+            <ListItem button key={'View Your Passengers'}>
+                <ListItemIcon> <GroupIcon /> </ListItemIcon>
+                <ListItemText primary={'View Your Passengers'} /> 
             </ListItem>
         </List>
         <Divider />
         <List>
             <ListItem button key={''}> 
-                <TextField id="standard-basic" label="Standard" />
-            </ListItem>
-            <ListItem button key={''}> 
-                <TimeInput mode='12h'/>
+                Aqui deberian aparecer todos los pasajeros del conductor y los podra filtrar por dia
             </ListItem>
         </List>
         <Divider />
@@ -197,5 +193,6 @@ export default function HomePassenger(props) {
               <Map locations={data} center={{ lat: -24.9923319, lng: 135.2252427 }} />
             </main>
           </div>
+                    
         );
 }
