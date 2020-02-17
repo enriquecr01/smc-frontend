@@ -91,7 +91,7 @@ const data = [
   }));
 
 
-export default function HomePassenger(props) {
+export default function HomeDriver(props) {
     
     const { container } = props;
   const classes = useStyles();
