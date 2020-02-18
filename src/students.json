@@ -1,0 +1,17 @@
+[
+    {
+        "enrollNumber" : "0316113567",
+        "name": "Enrique Chavez Romero",
+        "university": "Universidad Tecnologica de Tijuana"
+    },
+    {
+        "enrollNumber": "0316203598",
+        "name": "Un tipo inventado",
+        "university": "Universidad Tecnologica de Tijuana"
+    },
+    {
+        "enrollNumber": "1261702",
+        "name": "Selvi Morales",
+        "university": "Universidad Autonoma de Baja California"
+    }  
+]
