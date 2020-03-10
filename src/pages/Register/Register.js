@@ -126,7 +126,7 @@ class Register extends Component {
                             }
 
                             {this.state.step === 1 && 
-                                <SelectRole />
+                                <SelectRole finishRegister={this.saveStudent} student={this.state.student} />
                             }
 
                         </div>

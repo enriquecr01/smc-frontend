@@ -24,7 +24,7 @@ export default class DialogEnroll extends Component {
                 <DialogContentText id="alert-dialog-description">
                     {this.props.student.err === undefined && this.props.student.err !== true && 
                         <label> 
-                            Are you {this.props.student.name} From {this.props.student.university}? 
+                            Are you {this.props.student.name} {this.props.student.lastnames} From {this.props.student.university}? 
                         </label>                       
                     }
                     {this.props.student.err === true && 

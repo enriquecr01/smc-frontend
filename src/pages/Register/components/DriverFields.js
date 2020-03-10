@@ -31,9 +31,27 @@ export default class DriverFields extends Component {
         });
     } 
 
+    saveFields = () => {
+        let fields = {
+            brand: this.state.brand,
+            model: this.state.model,
+            license: this.state.license,
+            color: this.state.color,
+            year: this.state.year,
+            spaceInCar: this.state.spaceInCar,
+            plates: this.state.plates
+        };
+
+
+        this.props.addDriverFields(fields);
+    }
+
     render() {
         return (
                 <div className="row">
+                    <div className="col-md-12">
+                        <h4 style={{ textAlign: "center" }}>We need more information</h4>
+                    </div>
                     <div className="col-md-12 col-lg-6">
                         <TextField
                         value={this.state.brand}
@@ -44,7 +62,7 @@ export default class DriverFields extends Component {
                         InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                            <DirectionsCar />
+                                <DirectionsCar />
                             </InputAdornment>
                         ),
                         }}/>
@@ -149,8 +167,8 @@ export default class DriverFields extends Component {
                     <br />
                     <br />
                     <div className="col-md-12">
-                        <Button variant="contained" className="fullWidth" color="primary" onClick={this.verifyEnrollNumber}>
-                            <Typography variant="h6"> Verify! </Typography>
+                        <Button variant="contained" className="fullWidth" color="primary" onClick={this.saveFields}>
+                            <Typography variant="h6"> Save! </Typography>
                         </Button>
                     </div>
                 </div>
