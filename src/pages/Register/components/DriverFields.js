@@ -42,15 +42,26 @@ export default class DriverFields extends Component {
             plates: this.state.plates
         };
 
-
         this.props.addDriverFields(fields);
+    }
+
+    handleInputNumber = (e) => {
+        const { value, name } = e.target;
+
+        const re = /^[0-9\b]+$/;
+        if (value === '' || re.test(e.target.value)) {
+            if (value < 6) {
+                this.setState({ [name]: value });
+            }
+        }
     }
 
     render() {
         return (
                 <div className="row">
                     <div className="col-md-12">
-                        <h4 style={{ textAlign: "center" }}>We need more information</h4>
+                        <h4 style={{ textAlign: "center" }}>We need information about your car</h4>
+                        <br />
                     </div>
                     <div className="col-md-12 col-lg-6">
                         <TextField
@@ -118,7 +129,7 @@ export default class DriverFields extends Component {
                     <div className="col-md-12 col-lg-6">
                         <TextField
                             value={this.state.year}
-                            onChange={this.handleInput}
+                            onChange={this.handleInputNumber}
                             name="year"
                             label="Year"
                             className="marginTextField fullWidth"
@@ -134,7 +145,7 @@ export default class DriverFields extends Component {
                     <div className="col-md-12 col-lg-6">
                       <TextField
                         value={this.state.spaceInCar}
-                        onChange={this.handleInput}
+                        onChange={this.handleInputNumber}
                         name="spaceInCar"
                         label="Space In Car"
                         className="marginTextField fullWidth"

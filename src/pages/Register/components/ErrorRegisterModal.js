@@ -16,7 +16,7 @@ export default class ErrorRegisterModal extends Component {
                 onClose={this.props.closeModal}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description">
-                <DialogTitle id="alert-dialog-title">{"Why I need to ingress my enroll number?"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">{"Something went wrong"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         In SMC we want that all our users are real students. With your enroll number we check if you exists

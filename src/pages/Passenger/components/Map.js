@@ -1,23 +1,20 @@
 import React, { Component } from "react";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Map, GoogleApiWrapper } from "google-maps-react";
+import MarkerPassenger from "./MarkerPassenger";
 import './../passengerStyle.css';
+
 
 const MarkersList = props => {
     const { locations, ...markerProps } = props;
 
     return (
       <span>
-        {locations.map((location, i) => {
-            if (!location.lat || !location.lng) {
-                location.lat = location.lat();
-                location.lng = location.lng();
-            }
+        {locations.map((location) => {
           return (
-            <Marker
-                key={location.id}
-                {...markerProps}
-                position={{ lat: location.lat, lng: location.lng }}
-            />
+            <MarkerPassenger
+                key={location._id}
+                spot={location}
+                {...markerProps} />
           );
         })}
       </span>
@@ -33,26 +30,9 @@ export class MapContainer extends Component {
         };
     }
 
-    handleMapClick = (ref, map, ev) => {
-        const location = ev.latLng;
-
-        map.panTo(ev.latLng);
-
-        location.lat = location.lat();
-        location.lng = location.lng();
-        
-        this.setState(prevState => ({
-            locations: [...prevState.locations, location],
-            locationAdded: location
-        }));
-        
-    };
-
   render() {
     return (
-      <div 
-      style={{height: '100%'}}
-      >
+      <div style={{height: '100%'}}>
         <Map
           google={this.props.google}
           className={"map"}

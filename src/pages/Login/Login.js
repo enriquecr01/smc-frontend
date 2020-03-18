@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { client } from './../../apolloClient';
 import './styleLogin.css';
 
@@ -14,7 +15,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import SchoolIcon from '@material-ui/icons/School';
 import Logo from './../../assets/images/logo.jpg';
 
-import { LOGIN } from './../Mutations/Mutations';
+import { LOGIN } from './../../graphql/Mutations';
 
 import DialogLoginError from './Components/DialogLoginError';
 
@@ -37,11 +38,21 @@ class Login extends Component {
               mutation: LOGIN
             });
 
-            const { errors, token, success } = response.data.login;
+            const { errors, token, success, isDriver, user } = response.data.login;
             if (!success) {
                 this.setState({ errors: errors, modalErrorOpen: true });
             } else {
                 localStorage.setItem('token', token);
+                localStorage.setItem('name', user.name);
+                localStorage.setItem('lastnames', user.lastnames);
+                localStorage.setItem('universityId', user.university._id);
+                localStorage.setItem('universityName', user.university.name);
+                localStorage.setItem('city', user.city);
+                localStorage.setItem('photo', user.photo);
+                localStorage.setItem('raiting', user.raiting);
+                localStorage.setItem('enrollNumber', user.enrollNumber);
+
+                isDriver ? this.props.history.push("/driver/spots") : this.props.history.push("/passenger/allspots");
             }
           } catch(err){
             //   console.log(err);
@@ -53,7 +64,7 @@ class Login extends Component {
     }
 
     handleInput = (e) => {
-        const { value, name } = e.target;;
+        const { value, name } = e.target;
         this.setState({
             [name]: value
         });
@@ -112,10 +123,11 @@ class Login extends Component {
                                         </Button>
     
                                         <br />
+                                        <br />
     
-                                        <Button href="#" color="primary">
-                                            Don't have an account? Register Now!
-                                        </Button>
+                                        <Link to="/register">
+                                            <Button href="#" color="primary"> Don't have an account? Register Now! </Button>
+                                        </Link>
                                     </div>
                                 </Paper>
                             </div>

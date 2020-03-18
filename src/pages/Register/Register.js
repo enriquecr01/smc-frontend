@@ -18,6 +18,8 @@ import DialogEnroll from './components/DialogEnroll';
 import WhyEnrollNumber from './components/WhyEnrollNumber';
 import SelectRole from './components/SelectRole';
 
+import { login } from './../../graphql/MutationFunctions';
+
 class Register extends Component {
 
     state = {
@@ -70,6 +72,28 @@ class Register extends Component {
         this.setState({ step: 1, openModalFound: false })
     }
 
+    redirectToMainPage = async(enrollNumber, password) => {
+        console.log(enrollNumber);
+        console.log(password);
+        const data = await login(enrollNumber, password);
+        const { errors, token, success, isDriver, user } = data;
+        if (!success) {
+            this.setState({ errors: errors, modalErrorOpen: true });
+        } else {
+            localStorage.setItem('token', token);
+            localStorage.setItem('name', user.name);
+            localStorage.setItem('lastnames', user.lastnames);
+            localStorage.setItem('universityId', user.university._id);
+            localStorage.setItem('universityName', user.university.name);
+            localStorage.setItem('city', user.city);
+            localStorage.setItem('photo', user.photo);
+            localStorage.setItem('raiting', user.raiting);
+            localStorage.setItem('enrollNumber', user.enrollNumber);
+            isDriver ? this.props.history.push("/driver/spots") : this.props.history.push("/passenger/allspots");
+        }
+
+    }
+
     render() {
         // document.body.style.overflow = "hidden";
 
@@ -114,8 +138,10 @@ class Register extends Component {
                                                 </Button>
 
                                                 <br />
-                                                <Button onClick={this.openModalEnrollNumber}> Why I need to ingress my enroll number? </Button>
                                                 <br />
+
+                                                <Button onClick={this.openModalEnrollNumber}> Why I need to ingress my enroll number? </Button>
+
                                                 <Link to="/login">
                                                     <Button color="primary"> Do you already have an account? Login Now! </Button>
                                                 </Link>
@@ -126,7 +152,7 @@ class Register extends Component {
                             }
 
                             {this.state.step === 1 && 
-                                <SelectRole finishRegister={this.saveStudent} student={this.state.student} />
+                                <SelectRole finishRegister={this.saveStudent} student={this.state.student} redirect={this.redirectToMainPage} />
                             }
 
                         </div>

@@ -1,4 +1,4 @@
-.circle {
+/* .circle {
     height: 300px;
     width: 300px;
     background-color: red;
@@ -12,7 +12,7 @@
     z-index: -1;
     animation: roll 7s infinite;
     transform: rotate(30deg);
-}
+} */
 
 .arrow-right {
     width: 0; 
