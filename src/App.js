@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import HomePage from './pages/Home/Home';
-import HomePassenger from './pages/Passenger/Home';
-import HomeDriver from './pages/Driver/Home';
+import HomePassenger from './pages/Passenger/HomePassenger';
+import HomeDriver from './pages/Driver/HomeDriver';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import OnlyTest from './OnlyTest';

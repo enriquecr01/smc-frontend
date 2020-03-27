@@ -1,7 +1,21 @@
 import React, { Component, Fragment } from 'react';
+import ModalAllDrivers from './../Passenger/components/ModalAllDrivers';
 import './sidebarStyle.css';
 
 export default class Sidebar extends Component {
+
+    state = {
+        openModal: false
+    }
+
+    openModal = () => {
+        this.setState({ openModal: true });
+    }
+
+    closeModal = () => {
+        this.setState({ openModal: false });
+    }
+
     render() {
         return (
             <nav className="navbarSMC">
@@ -36,7 +50,10 @@ export default class Sidebar extends Component {
 
                     {this.props.role === 'passenger' && 
                         <Fragment>
-
+                            <ModalAllDrivers 
+                                open={this.state.openModal}
+                                closeModal={this.closeModal}
+                                />
                             <li className="navSMC-item">
                                 <a className="navSMC-link">
                                     <svg
@@ -60,7 +77,7 @@ export default class Sidebar extends Component {
                                 </a>
                             </li>
 
-                            <li className="navSMC-item">
+                            <li className="navSMC-item" onClick={this.openModal}>
                                 <a className="navSMC-link">
                                     <svg
                                         aria-hidden="true"

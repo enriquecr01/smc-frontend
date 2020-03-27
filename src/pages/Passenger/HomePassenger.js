@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Map from './components/Map';
-import Sidebar from './../Shared/Sidebar';
+import Sidebar from '../Shared/Sidebar';
 import './passengerStyle.css';
-import { getAllSpots } from './../../graphql/QueriesFunctions';
+import { getAllSpots } from '../../graphql/QueriesFunctions';
 
 export default class HomePassenger extends Component {
 

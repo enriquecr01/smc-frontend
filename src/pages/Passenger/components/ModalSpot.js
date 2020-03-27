@@ -30,12 +30,9 @@ export default class ModalSpot extends Component {
                 <DialogContent>
                     <div className="row">
                         <div className="col-md-4">
-                            {/* <img src="https://s3-media0.fl.yelpcdn.com/bphoto/sHsUVypA7pDePqaxgrhDMQ/ls.jpg" style={{ width: "100%" }} />
-                            { this.props.spotInfo.driver.name } { this.props.spotInfo.driver.lastnames } <br />
-                            Driver */}
                             <div className="containerImage">
                                 <div className="circle">
-                                    <img src="https://i.pinimg.com/originals/e2/b8/2a/e2b82aded815e80351b929a77519adaa.jpg" />
+                                    <img src="https://i.pinimg.com/originals/e2/b8/2a/e2b82aded815e80351b929a77519adaa.jpg" alt={ this.props.spotInfo.driver.name + " " + this.props.spotInfo.driver.lastnames } />
                                 </div>
                             </div>
                         </div>
@@ -45,15 +42,14 @@ export default class ModalSpot extends Component {
                             </div>
                             <hr />
                             <div className="p-20 informationSpot">
-                                <QueryBuilderIcon />  Hour: <label className="labelField"> { this.props.spotInfo.hour }  </label> 
+                                <QueryBuilderIcon />  Hour: <label className="labelField"> { this.props.spotInfo.hour }  </label>
                                 <br />
-                                <MonetizationOnIcon />  Price: <label className="labelField"> { this.props.spotInfo.price } </label> 
+                                <MonetizationOnIcon />  Price: <label className="labelField"> { this.props.spotInfo.price } </label>
                                 <br />
                                 <AirlineSeatReclineNormalIcon />  Available Space: <label className="labelField"> { this.props.spotInfo.availableSpace } </label>
                                 <br />
                                 <TodayIcon />  Day: <label className="labelField"> { days[this.props.spotInfo.day] } </label>
                             </div>
-
                         </div>
                     </div>
                     <DialogContentText id="alert-dialog-description">

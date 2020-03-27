@@ -19,7 +19,6 @@ class MarkerPassenger extends Component
 
   
     onMarkerClick = () => {
-        console.log(this.props.spot);
         this.setState({ openModal: true });
     };
 

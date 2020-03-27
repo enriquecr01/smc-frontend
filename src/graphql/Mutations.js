@@ -8,6 +8,7 @@ export const LOGIN = gql`
             errors
             isDriver
             user {
+                _id
                 name
                 lastnames
                 university

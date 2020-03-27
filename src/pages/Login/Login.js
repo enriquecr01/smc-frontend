@@ -43,6 +43,7 @@ class Login extends Component {
                 this.setState({ errors: errors, modalErrorOpen: true });
             } else {
                 localStorage.setItem('token', token);
+                localStorage.setItem('id', user._id);
                 localStorage.setItem('name', user.name);
                 localStorage.setItem('lastnames', user.lastnames);
                 localStorage.setItem('universityId', user.university._id);
@@ -51,6 +52,7 @@ class Login extends Component {
                 localStorage.setItem('photo', user.photo);
                 localStorage.setItem('raiting', user.raiting);
                 localStorage.setItem('enrollNumber', user.enrollNumber);
+
 
                 isDriver ? this.props.history.push("/driver/spots") : this.props.history.push("/passenger/allspots");
             }

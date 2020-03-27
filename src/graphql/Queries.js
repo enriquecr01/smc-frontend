@@ -25,3 +25,31 @@ export const ALL_SPOTS = gql`{
         }
     }
 }`;
+
+
+export const VIEW_DRIVERS_BY_DAY = gql`
+    query Student($id: ID!) {
+        Student(idStudent: $id) {
+            _id
+            spots {
+                _id
+                day
+                hour
+                price
+                availableSpace
+                driver {
+                    _id
+                    name
+                    lastnames
+                    photo
+                    car {
+                        _id
+                        brand
+                        model
+                        plates
+                    }
+                }
+            }
+        }
+    }
+`;
