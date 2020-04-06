@@ -125,3 +125,28 @@ export const CREATE_CAR = gql`
             _id
         }
     }`;
+
+export const CREATE_SPOT = gql`
+    mutation createSpot($driver: String!, 
+                        $latitude: Float!, 
+                        $longitude: Float!,
+                        $price: Float!,
+                        $hour: String!,
+                        $day: Int!) {
+        createSpot(input: {
+            driver: $driver,
+            latitude: $latitude,
+            longitude: $longitude,
+            price: $price,
+            hour: $hour,
+            day: $day}) {
+                _id
+                day
+                hour
+                price
+                latitude
+                longitude
+                availableSpace
+                status
+    }
+}`;

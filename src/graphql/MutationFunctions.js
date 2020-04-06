@@ -2,7 +2,8 @@ import { client } from './../apolloClient';
 import { LOGIN, 
         STUDENT_MUTATION_WITH_CAR,
         STUDENT_MUTATION,
-        CREATE_CAR
+        CREATE_CAR,
+        CREATE_SPOT
     } from './Mutations'; 
 
 
@@ -80,4 +81,23 @@ export async function registerStudentWithCar(student, carId) {
       } catch(err){
           return 'error';
       }
+}
+
+export async function createSpot(spot) {
+  try {
+      const response = await client.mutate({
+        variables: {  
+          driver: spot.driver,
+          latitude: spot.latitude,
+          longitude: spot.longitude,
+          price: spot.price,
+          hour: spot.hour,
+          day: spot.day
+      },
+        mutation: CREATE_SPOT
+      });
+      return response.data.createSpot;
+    } catch(err){
+        return 'error';
+    }
 }

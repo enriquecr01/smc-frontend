@@ -53,3 +53,24 @@ export const VIEW_DRIVERS_BY_DAY = gql`
         }
     }
 `;
+
+export const GET_SPOTS_DRIVER = gql`
+    query SpotsByDriverAndDay($driver: String!, $day: Int!) {
+		SpotsByDriverAndDay(driver: $driver, day: $day) {
+            _id
+            day
+            hour
+            price
+            latitude
+            longitude
+            passengers {
+            _id
+            name
+            lastnames
+            raiting
+            }
+            availableSpace
+            status
+        }
+    }
+`;
