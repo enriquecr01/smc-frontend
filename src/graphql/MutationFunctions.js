@@ -3,7 +3,9 @@ import { LOGIN,
         STUDENT_MUTATION_WITH_CAR,
         STUDENT_MUTATION,
         CREATE_CAR,
-        CREATE_SPOT
+        CREATE_SPOT,
+        UPDATE_SPOT,
+        DELETE_SPOT
     } from './Mutations'; 
 
 
@@ -97,6 +99,40 @@ export async function createSpot(spot) {
         mutation: CREATE_SPOT
       });
       return response.data.createSpot;
+    } catch(err){
+        return 'error';
+    }
+}
+
+export async function updateSpot(spot, id) {
+  try {
+      const response = await client.mutate({
+        variables: {  
+          id: id,
+          driver: spot.driver,
+          latitude: spot.latitude,
+          longitude: spot.longitude,
+          price: spot.price,
+          hour: spot.hour,
+          day: spot.day
+      },
+        mutation: UPDATE_SPOT
+      });
+      return response.data.updateSpot;
+    } catch(err){
+        return 'error';
+    }
+}
+
+export async function deleteSpot(id) {
+  try {
+      const response = await client.mutate({
+        variables: {  
+          id: id
+      },
+        mutation: DELETE_SPOT
+      });
+      return response.data.deleteSpot;
     } catch(err){
         return 'error';
     }

@@ -18,7 +18,6 @@ export default class HomeDriver extends Component {
 
   async getSpots(id, day) {
     const spots = await getSpotsByDriverId(id, day);
-    console.log(spots);
     this.setState({ spots: spots });
   }
 
@@ -32,6 +31,18 @@ export default class HomeDriver extends Component {
     this.getSpots(localStorage.getItem('id'), value);
   }
 
+  modifySpot = (index, spotModified) => {
+    let auxSpots = this.state.spots;
+    auxSpots[index] = spotModified;
+    this.setState({ spots: auxSpots });
+  }
+
+  removeSpot = (index) => {
+    let auxSpots = this.state.spots;
+    auxSpots.splice(index, 1);
+    this.setState({ spots: auxSpots });
+  }
+
   render() {
     return (
       <div>
@@ -41,10 +52,12 @@ export default class HomeDriver extends Component {
             <div className="col-12 generalMap">
                 <div className="card shadow h-100" style={{ position: 'static' }}>
                     <MapDriver locations={this.state.spots} 
-                                center={{ lat: -24.9923319, lng: 135.2252427 }} 
+                                center={{ lat: 32.523453, lng: -117.011396 }} 
                                 sendLatLng={this.setLatLng} 
                                 selectedDay={this.state.selectedDay} 
-                                addSpotToMap={this.setSpotToLocations} />
+                                addSpotToMap={this.setSpotToLocations}
+                                modifySpot={this.modifySpot}
+                                removeSpot={this.removeSpot} />
                 </div>
             </div>
           </div>

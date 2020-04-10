@@ -64,10 +64,10 @@ export const GET_SPOTS_DRIVER = gql`
             latitude
             longitude
             passengers {
-            _id
-            name
-            lastnames
-            raiting
+                _id
+                name
+                lastnames
+                raiting
             }
             availableSpace
             status

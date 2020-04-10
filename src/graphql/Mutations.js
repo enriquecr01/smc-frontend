@@ -141,12 +141,59 @@ export const CREATE_SPOT = gql`
             hour: $hour,
             day: $day}) {
                 _id
-                day
-                hour
-                price
-                latitude
-                longitude
-                availableSpace
-                status
+            day
+            hour
+            price
+            latitude
+            longitude
+            passengers {
+                _id
+                name
+                lastnames
+                raiting
+            }
+            availableSpace
+            status
+    }
+}`;
+
+export const UPDATE_SPOT = gql`
+    mutation updateSpot($id: ID!,
+  									$driver: String!, 
+  									$latitude: Float!, 
+  									$longitude: Float!,
+										$price: Float!,
+										$hour: String!,
+										$day: Int!) {
+  updateSpot(input: {
+    driver: $driver,
+  	latitude: $latitude,
+  	longitude: $longitude,
+  	price: $price,
+  	hour: $hour,
+  	day: $day}, _id: $id) {
+        _id
+        day
+        hour
+        price
+        latitude
+        longitude
+        passengers {
+            _id
+            name
+            lastnames
+            raiting
+        }
+        availableSpace
+        status
+    }
+}`;
+
+
+export const DELETE_SPOT = gql`
+    mutation deleteSpot($id: ID!) {
+    deleteSpot(_id: $id) {
+        _id
+        status
     }
 }`;

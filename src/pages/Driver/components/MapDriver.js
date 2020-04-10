@@ -1,19 +1,23 @@
-import React, { Component } from "react";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import React, { Component, Fragment } from "react";
+import { Map, GoogleApiWrapper } from "google-maps-react";
 import AddSpotDialog from './AddSpotDialog';
+import MarkerDriver from './MarkerDriver';
 import './../driverStyle.css';
 
 const MarkersList = props => {
-    const { locations, ...markerProps } = props;
+    const { locations, modifySpot, removeSpot, ...markerProps } = props;
 
     return (
       <span>
         {locations.map((location, i) => {
           return (
-            <Marker
-                key={i}
+            <MarkerDriver 
+                key={location._id}
+                spot={location}
+                index={i}
+                removeSpot={removeSpot}
+                modifySpot={modifySpot}
                 {...markerProps}
-                position={{ lat: location.latitude, lng: location.longitude }}
             />
           );
         })}
@@ -66,12 +70,16 @@ export class MapDriver extends Component {
         <Map
           google={this.props.google}
           className={"map"}
-          zoom={4}
+          zoom={13}
           initialCenter={this.props.center}
           onClick={this.handleMapClick}
           style={{height: '100%'}}
           >
-            <MarkersList locations={this.props.locations} icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png" />
+            <MarkersList 
+                          locations={this.props.locations} 
+                          removeSpot={this.props.removeSpot} 
+                          modifySpot={this.props.modifySpot}
+                          icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png" />
         </Map>
       </div>
     );
