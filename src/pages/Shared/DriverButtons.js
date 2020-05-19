@@ -1,8 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import ChangeDayModal from './ChangeDayModal';
+import ModalAllPassenger from './ModalAllPassengers';
 import { days } from './../../enums';
 
 export default class DriverButtons extends Component {
+
+    state = {
+        openPassenger: false
+    }
+
+    openModalPassenger = () => {
+        this.setState({ openPassenger: true });
+    }
+
+    closeModalPassenger = () => {
+        this.setState({ openPassenger: false });
+    }
+    
+
     render() {
         return (
             <Fragment>
@@ -12,6 +27,10 @@ export default class DriverButtons extends Component {
                     daySelected={this.props.daySelected}
                     changeDay={this.props.changeDay}
                 />
+
+                <ModalAllPassenger 
+                    open={this.state.openPassenger} 
+                    closeModal={this.closeModalPassenger} />
                 <li className="navSMC-item">
                     <a className="navSMC-link">
                         <svg
@@ -35,7 +54,7 @@ export default class DriverButtons extends Component {
                     </a>
                 </li>
 
-                <li className="navSMC-item">
+                <li className="navSMC-item" onClick={this.openModalPassenger}>
                     <a className="navSMC-link">
                         <svg
                             aria-hidden="true"
@@ -55,29 +74,6 @@ export default class DriverButtons extends Component {
                             </g>
                         </svg>
                         <span className="linkSMC-text">Your passengers</span>
-                    </a>
-                </li>
-
-                <li className="navSMC-item">
-                    <a className="navSMC-link">
-                        <svg
-                            aria-hidden="true"
-                            focusable="false"
-                            data-prefix="fad"
-                            data-icon="cat"
-                            role="img"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
-                            className="svg-inline--fa fa-map-marker-alt fa-w-16 fa-9x">
-                            <g className="fa-group">
-                                <path
-                                    fill="currentColor"
-                                    d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
-                                    className="fa-secondary"
-                                ></path>
-                            </g>
-                        </svg>
-                        <span className="linkSMC-text">Filter Spots</span>
                     </a>
                 </li>
 

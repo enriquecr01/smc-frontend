@@ -27,6 +27,20 @@ export default class Sidebar extends Component {
         this.setState({ openModalChangeDay: false });
     }
 
+    logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        localStorage.removeItem('name');
+        localStorage.removeItem('lastnames');
+        localStorage.removeItem('universityId');
+        localStorage.removeItem('universityName');
+        localStorage.removeItem('city');
+        localStorage.removeItem('photo');
+        localStorage.removeItem('raiting');
+        localStorage.removeItem('enrollNumber');
+        window.location = "/login";
+    }
+
     render() {
         return (
             <nav className="navbarSMC">
@@ -110,6 +124,29 @@ export default class Sidebar extends Component {
                                     <span className="linkSMC-text">My drivers</span>
                                 </a>
                             </li>
+
+                            <li className="navSMC-item">
+                                <a className="navSMC-link">
+                                    <svg
+                                        aria-hidden="true"
+                                        focusable="false"
+                                        data-prefix="fad"
+                                        data-icon="cat"
+                                        role="img"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512"
+                                        className="svg-inline--fa fa-map-marker-alt fa-w-16 fa-9x">
+                                        <g className="fa-group">
+                                            <path
+                                                fill="currentColor"
+                                                d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"
+                                                className="fa-secondary"
+                                            ></path>
+                                        </g>
+                                    </svg>
+                                    <span className="linkSMC-text">Filter Spots</span>
+                                </a>
+                            </li>
                         </Fragment>
                     }
 
@@ -146,6 +183,30 @@ export default class Sidebar extends Component {
                                 </g>
                             </svg>
                             <span className="linkSMC-text">Profile</span>
+                        </a>
+                    </li>
+
+
+                    <li className="navSMC-item" onClick={this.logout}>
+                        <a className="navSMC-link">
+                            <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fad"
+                                data-icon="alien-monster"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                                className="svg-inline--fa fa-alien-monster fa-w-18 fa-9x">
+                                <g className="fa-group">
+                                    <path
+                                        fill="currentColor"
+                                        d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z"
+                                        className="fa-secondary"
+                                    ></path>
+                                </g>
+                            </svg>
+                            <span className="linkSMC-text">Logout</span>
                         </a>
                     </li>
                 </ul>
